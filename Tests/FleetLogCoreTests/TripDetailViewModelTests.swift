@@ -14,7 +14,7 @@ final class TripDetailViewModelTests: XCTestCase {
         await model.loadWeather()
 
         XCTAssertEqual(model.weatherPhase, .loaded)
-        XCTAssertEqual(model.weather?.source, .live)
+        XCTAssertEqual(model.weather?.source, WeatherSource.live)
         XCTAssertEqual(model.weather?.condition, "Clear")
     }
 
@@ -29,7 +29,7 @@ final class TripDetailViewModelTests: XCTestCase {
         await model.loadWeather()
 
         XCTAssertEqual(model.weatherPhase, .loaded)
-        XCTAssertEqual(model.weather?.source, .sample)
+        XCTAssertEqual(model.weather?.source, WeatherSource.sample)
         XCTAssertEqual(model.weather?.observedAt, "Sample forecast")
     }
 
