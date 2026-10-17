@@ -145,8 +145,8 @@ final class TripRecord {
     var destinationLatitude: Double = 0
     var destinationLongitude: Double = 0
     var statusRaw: String = TripStatus.scheduled.rawValue
-    var departure: Date = .now
-    var eta: Date = .now
+    var departure: Date = Date(timeIntervalSince1970: 0)
+    var eta: Date = Date(timeIntervalSince1970: 0)
     var cargo: String = ""
     var notes: String = ""
     var miles: Double = 0
