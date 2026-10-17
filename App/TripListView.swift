@@ -48,7 +48,7 @@ struct TripListView: View {
                     subtitle: "Loading trips saved on this device."
                 )
             } else {
-                tripList
+                tripList()
             }
         case .failed(let message):
             if model.trips.isEmpty {
@@ -70,7 +70,7 @@ struct TripListView: View {
                     message: "Try another driver, city, reference, or filter."
                 )
             } else {
-                tripList
+                tripList()
             }
         }
     }
