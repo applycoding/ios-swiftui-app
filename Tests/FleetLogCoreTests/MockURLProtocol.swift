@@ -1,4 +1,5 @@
 import Foundation
+@testable import FleetLogCore
 
 enum URLProtocolStub {
     nonisolated(unsafe) static var handler: ((URLRequest) throws -> (HTTPURLResponse, Data))?

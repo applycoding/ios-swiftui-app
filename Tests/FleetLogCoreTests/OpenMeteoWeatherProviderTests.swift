@@ -25,7 +25,7 @@ final class OpenMeteoWeatherProviderTests: XCTestCase {
         XCTAssertEqual(weather.code, 2)
         XCTAssertEqual(weather.condition, "Partly cloudy")
         XCTAssertEqual(weather.observedAt, "2026-10-16T15:00")
-        XCTAssertEqual(weather.source, .live)
+        XCTAssertEqual(weather.source, WeatherSource.live)
     }
 
     func testLiveRequestTargetsOpenMeteoWithPlaceAndUnits() async throws {
@@ -68,7 +68,7 @@ final class OpenMeteoWeatherProviderTests: XCTestCase {
 
         let weather = try await provider.forecast(for: PlaceDirectory.denver)
 
-        XCTAssertEqual(weather.source, .sample)
+        XCTAssertEqual(weather.source, WeatherSource.sample)
         XCTAssertEqual(weather.condition, WeatherCode.label(for: weather.code))
         XCTAssertEqual(weather.observedAt, "Sample forecast")
     }
@@ -82,7 +82,7 @@ final class OpenMeteoWeatherProviderTests: XCTestCase {
 
         let weather = try await provider.forecast(for: PlaceDirectory.seattle)
 
-        XCTAssertEqual(weather.source, .sample)
+        XCTAssertEqual(weather.source, WeatherSource.sample)
     }
 
     func testInvalidPlaceSkipsTheNetwork() async throws {
@@ -91,7 +91,7 @@ final class OpenMeteoWeatherProviderTests: XCTestCase {
 
         let weather = try await provider.forecast(for: place)
 
-        XCTAssertEqual(weather.source, .sample)
+        XCTAssertEqual(weather.source, WeatherSource.sample)
     }
 
     func testPrimaryErrorSurfacesWhenFallbackAlsoFails() async {
